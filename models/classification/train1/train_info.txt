@@ -1,0 +1,9 @@
+task: classification
+model: CustomCNNTrafficSignClassifier
+epochs: 48
+batch_size: 32
+num_workers: 4
+patience: 10
+optimizer: Adam
+learning_rate: 1.0000000000000002e-06
+minutes_trained: 57
