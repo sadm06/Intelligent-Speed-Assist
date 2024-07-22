@@ -24,7 +24,7 @@ DECELERATION = 7  # Average deceleration of a car on a normal surface with stand
 OPTICAL_DELAY = -1  # Delay in seconds until optical warning is shown (Set to -1 to use speed dependent delay)
 ACOUSTIC_DELAY = 2  # Delay in seconds after optical warning
 HAPTIC_DELAY = 4  # Delay in seconds after optical warning
-CAP_FPS = False  # Set to True to use the input video's fps, False to use an uncapped fps
+CAP_FPS = True  # Set to True to use the input video's fps, False to use an uncapped fps
 STATE_CHANGE_THRESHOLD = 30  # Speed threshold for state change
 MAX_SPEED = 180  # Maximum speed for active state
 
@@ -231,7 +231,8 @@ class InactiveState(State):
 
 class ErrorState(State):
     def handle(self):
-        display_dash_error(self.context.screen)
+        if assist_mode:
+            display_dash_error(self.context.screen)
         cv2.imshow('Dashboard Camera', self.context.inactive_image)
 
 
